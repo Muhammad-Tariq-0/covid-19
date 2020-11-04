@@ -11,6 +11,10 @@ import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+import BarChart from './barchart';
+import Display0 from './Display0';
+import Display1 from './Display1';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,16 +74,17 @@ export default function Navbar(props) {
       <Toolbar id="back-to-top-anchor" />
       <Container>
         <Box my={2}>
-          {[...new Array(12)]
-            .map(
-              () => ``,
-            )
-            .join('\n')}
+          
+           <Display0/>
+            <BarChart/>
+            <br/> <br/> <br/>
+           <Display1/>
         </Box>
       </Container>
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
+
+          <KeyboardArrowUpIcon/>
         </Fab>
       </ScrollTop>
     </React.Fragment>

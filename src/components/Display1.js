@@ -23,10 +23,10 @@ export default function Display1() {
   const [globaldata,setGlobaldata] = useState([{}]);
   useEffect(()=>{
     async function caller(){
-     const response =await fetch('https://api.thevirustracker.com/free-api?countryTotals=ALL');
+     const response =await fetch('https://api.covid19api.com/summary');
      let data =await response.json();
-     setGlobaldata(Object.values(Object.values(data.countryitems)[0]));
-     console.log(Object.values(Object.values(data.countryitems)[0]));
+      setGlobaldata(data.Countries);
+    console.log(data.Countries);
     }
     caller();
   },[])
@@ -40,9 +40,9 @@ export default function Display1() {
   {globaldata.map((keys,val)=>{
     return(
         <tr className="rows">
-            <td >{globaldata[val].title}</td> 
-            <td>{globaldata[val].total_cases}</td> 
-            <td>{globaldata[val].total_deaths}</td> 
+            <td >{globaldata[val].Country}</td> 
+            <td>{globaldata[val].TotalConfirmed}</td> 
+            <td>{globaldata[val].TotalDeaths}</td> 
         </tr>
     )})}
 

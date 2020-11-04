@@ -31,8 +31,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
    color: 'blue',
    textTransform: "uppercase"
-
-  }
+  },
+  paper1: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
 }));
 
 export default function Display0() {
@@ -42,17 +46,13 @@ export default function Display0() {
   const [globaldata,setGlobaldata] = useState({});
   useEffect(()=>{
     async function caller(){
-     const response =await fetch('https://api.thevirustracker.com/free-api?global=stats');
+     const response =await fetch('https://api.covid19api.com/summary');
      let data =await response.json();
-     delete data.results[0].source;
-     delete data.results[0].total_unresolved;
-     delete data.results[0].total_new_cases_today;
-     delete data.results[0].total_new_deaths_today;
-     delete data.results[0].total_active_cases;
-     delete data.results[0].total_serious_cases;
-     delete data.results[0].total_affected_countries;
-     setGlobaldata(data.results[0]);
-     console.log(data.results[0]);
+     delete data.Global.NewConfirmed;
+     delete data.Global.NewDeaths;
+     delete data.Global.NewRecovered;
+     setGlobaldata(data.Global);
+     console.log(data.Global);
     }
     caller();
   },[])
@@ -60,13 +60,14 @@ export default function Display0() {
   
   return (
     <div className={classes.root}>
-      <div className="title" >
-              <h2>CORONA VIRUS</h2>   
-            </div>
-            <div className="pic">
-              <img src={a} width="80" height="80" alt={a} />
-            </div>
-      <Grid container spacing={3}>
+        <Grid container spacing={3}>
+            <Grid item xs={12} >
+            <Paper className={classes.paper1}>
+            <h2 className="title">CORONA VIRUS</h2> 
+            <img src={a} width={80} height={80} alt={a} />
+            </Paper>
+            </Grid>
+    
   {Object.keys(globaldata).map((keys,val)=>{
     return(
       <Grid item xs={12} sm={4} key={val}>
@@ -77,13 +78,13 @@ export default function Display0() {
       </Paper>
     </Grid>
     )})}
-      <Grid item xs={6} sm={4}>
+      <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}><img src={h} alt={h} width="200" height="200"/></Paper>
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}><img src={a4} alt={a4} width="200" height="200"/></Paper>
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}><img src={g} alt={g} width="200" height="200"/></Paper>
         </Grid>
 
@@ -93,16 +94,16 @@ export default function Display0() {
          </center>
         </div>
        
-        <Grid item xs={6} sm={4}>
-          <Paper className={classes.paper} data-aos="fade-left"><img src={washhand} alt={washhand} width="200" height="200"/>
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.paper} data-aos="fade-left"><img src={washhand} alt={washhand} width={200} height={200}/>
          <h2> Wash hands daily</h2></Paper>
         </Grid>
-        <Grid item xs={6} sm={4}>
-          <Paper className={classes.paper} data-aos="fade-left"><img src={waermask} alt={waermask} width="200" height="200"/>
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.paper} data-aos="fade-left"><img src={waermask} alt={waermask} width={200} height={200}/>
           <h2> Wear Mask </h2></Paper>
         </Grid>
-        <Grid item xs={6} sm={4}>
-          <Paper className={classes.paper} data-aos="fade-left"><img src={a3} alt={a3} width="200" height="200"/>
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.paper} data-aos="fade-left"><img src={a3} alt={a3} width={200} height={200}/>
           <h2> Visit Doctor</h2></Paper>
         </Grid>
       </Grid>

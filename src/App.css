@@ -14,20 +14,11 @@ font-size: 25px;
   background-color: white;
 }
 .title{
-  width: 57%;
-  height: 60px;
 font-size: 20px;
-text-align-last: right;
 color: green;
 font-family: 'Times New Roman', Times, serif;
 }
-.pic{
 
-  width: 40%;
-  height: 95px;
-  float: right;
-  margin-top: -80px;
-}
 .stay{
   margin-top: 50px;
   width: 100%;

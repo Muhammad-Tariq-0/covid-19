@@ -11,11 +11,10 @@ function BarChart(){
     const [globaldata,setGlobaldata] = useState({});
     useEffect(()=>{
       async function caller(){
-       const response =await fetch('https://api.thevirustracker.com/free-api?global=stats');
+       const response =await fetch('https://api.covid19api.com/summary');
        let data =await response.json();
-       delete data.results[0].source;
-       setGlobaldata(data.results[0]);
-       console.log(data.results[0]);
+       setGlobaldata(data.Global);
+     console.log(data.Global);
       }
       caller();
     },[])
@@ -27,15 +26,13 @@ function BarChart(){
                 
                 <Bar
                 data={{
-                  labels: ['Total Cases','Recovered Peoples','Unresolved Cases','Total Deaths','New Cases Today','New Deaths Today','Active Cases',
-                'Serious Cases','Total Affected Contries'],
+                  labels: ['Total Cases','Recovered Peoples','Total Deaths','New Cases Today','New Deaths Today','New Recovered Cases'],
                   datasets: [
                     {
                       label: 'People',
                       backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
-                      data: [globaldata.total_cases,globaldata.total_recovered,globaldata.total_unresolved,globaldata.total_deaths,
-                    globaldata.total_new_cases_today,globaldata.total_new_deaths_today,globaldata.total_active_cases,
-                globaldata.total_serious_cases,globaldata.total_affected_countries]
+                      data: [globaldata.TotalConfirmed,globaldata.TotalRecovered,globaldata.TotalDeaths,
+                    globaldata.NewConfirmed,globaldata.NewDeaths,globaldata.NewRecovered]
                     },
                   ],
                 }}
