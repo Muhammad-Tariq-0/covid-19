@@ -82,10 +82,10 @@ export default function Display0() {
           <Paper className={classes.paper}><img src={h} alt={h} width="200" height="200"/></Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}><img src={a4} alt={a4} width="200" height="200"/></Paper>
+          <Paper className={classes.paper}><img src={g} alt={g} width="200" height="200"/></Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}><img src={g} alt={g} width="200" height="200"/></Paper>
+          <Paper className={classes.paper}><img src={a4} alt={a4} width="200" height="200"/></Paper>
         </Grid>
 
 
