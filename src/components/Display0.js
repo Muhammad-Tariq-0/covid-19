@@ -51,6 +51,7 @@ export default function Display0() {
      delete data.Global.NewConfirmed;
      delete data.Global.NewDeaths;
      delete data.Global.NewRecovered;
+      delete data.Global.Date;
      setGlobaldata(data.Global);
      console.log(data.Global);
     }
